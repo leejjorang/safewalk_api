@@ -20,4 +20,4 @@ def calculate_route():
     return jsonify({"route": route_coords})
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=8000)

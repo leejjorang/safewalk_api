@@ -2,3 +2,12 @@ Flask
 networkx==2.8.4
 osmnx
 gunicorn
+scipy
+numpy
+pandas
+geopandas
+matplotlib
+requests
+Shapely
+pyproj
+

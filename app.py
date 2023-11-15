@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 import networkx as nx
 import osmnx as ox
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/calculate_route', methods=['POST'])
 def calculate_route():

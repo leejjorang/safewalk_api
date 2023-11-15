@@ -10,4 +10,6 @@ matplotlib
 requests
 Shapely
 pyproj
+Flask-CORS
+
 

@@ -17,7 +17,18 @@ def calculate_route():
     arrive_node = ox.nearest_nodes(G, arrive_point[0], arrive_point[1])
     
     route = nx.astar_path(G, start_node, arrive_node, weight='length')
-    route_coords = [{'lat': G.nodes[n]['lat'], 'lon': G.nodes[n]['lon']} for n in route]
+    
+    route_coords = []
+    for i in range(len(route) - 1): #엣지 linestring에 있는 점들까지 포함하도록
+        u, v = route[i], route[i + 1]
+        if 'geometry' in G[u][v][0]:
+            line = list(G[u][v][0]['geometry'].coords)
+            del line[-1]
+            for point in line:
+                route_coords.append({'X': point[0], 'Y': point[1]})
+        else:
+            route_coords.append({'X': G.nodes[u]['x'], 'Y': G.nodes[u]['y']})
+    route_coords.append({'X': G.nodes[route[-1]]['x'], 'Y': G.nodes[route[-1]]['y']})
     
     return jsonify({"route": route_coords})
 

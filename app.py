@@ -21,8 +21,8 @@ def calculate_route():
     route_coords = []
     for i in range(len(route) - 1): #엣지 linestring에 있는 점들까지 포함하도록
         u, v = route[i], route[i + 1]
-        if 'geometry' in G[u][v][0]:
-            line = list(G[u][v][0]['geometry'].coords)
+        if 'geometry' in G[u][v]:
+            line = list(G[u][v]['geometry'].coords)
             del line[-1]
             for point in line:
                 route_coords.append({'X': point[0], 'Y': point[1]})
@@ -33,4 +33,4 @@ def calculate_route():
     return jsonify({"route": route_coords})
 
 if __name__ == '__main__':
-    app.run(port=8000)
+    app.run(port=8000,debug=True)

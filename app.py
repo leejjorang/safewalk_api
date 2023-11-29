@@ -53,12 +53,12 @@ def calculate_route():
     route_coords1 = include_linestring(G, route1)
     route_coords2 = include_linestring(G, route2)
     
-    path_length1 = nx.astar_path_length(G, start_node, arrive_node, weight='custom_weight1')
-    path_length2 = nx.astar_path_length(G, start_node, arrive_node, weight='custom_weight2')
+    path_length1 = nx.astar_path_length(G, start_node, arrive_node, weight=custom_weight1)
+    path_length2 = nx.astar_path_length(G, start_node, arrive_node, weight=custom_weight2)
     walking_speed = 5100  # 시간당 미터(1분에 85미터)
-    estimated_time1 = (path_length1 / walking_speed) * 6000 #분단위
+    estimated_time1 = (path_length1 / walking_speed) * 60 #분단위
     estimated_time1 = f'{estimated_time1:.0f}'
-    estimated_time2 = (path_length2 / walking_speed) * 6000 #분단위
+    estimated_time2 = (path_length2 / walking_speed) * 60 #분단위
     estimated_time2 = f'{estimated_time2:.0f}'
     
     return jsonify({"route1": route_coords1, "route2": route_coords2, 

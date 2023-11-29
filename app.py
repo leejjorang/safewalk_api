@@ -55,7 +55,7 @@ def calculate_route():
     
     path_length1 = nx.astar_path_length(G, start_node, arrive_node, weight=custom_weight1)
     path_length2 = nx.astar_path_length(G, start_node, arrive_node, weight=custom_weight2)
-    walking_speed = 5100  # 시간당 미터(1분에 85미터)
+    walking_speed = 4000  # 시간당 미터(1분에 85미터)
     estimated_time1 = (path_length1 / walking_speed) * 60 #분단위
     estimated_time1 = f'{estimated_time1:.0f}'
     estimated_time2 = (path_length2 / walking_speed) * 60 #분단위

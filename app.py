@@ -53,9 +53,19 @@ def calculate_route():
     route_coords1 = include_linestring(G, route1)
     route_coords2 = include_linestring(G, route2)
     
-    path_length1 = nx.astar_path_length(G, start_node, arrive_node, weight=custom_weight1)
-    path_length2 = nx.astar_path_length(G, start_node, arrive_node, weight=custom_weight2)
-    walking_speed = 4000  # 시간당 미터(1분에 85미터)
+    path_length1 = 0  #첫번째 경로 거리
+    for i in range(len(route1) - 1):
+        u, v = route1[i], route1[i + 1]
+        edge_data = G.get_edge_data(u, v)
+        path_length1 += edge_data['length']
+        
+    path_length2 = 0 #두번째 경로 거리
+    for i in range(len(route2) - 1):
+        u, v = route2[i], route2[i + 1]
+        edge_data = G.get_edge_data(u, v)
+        path_length2 += edge_data['length']
+        
+    walking_speed = 4000  # 시간당 미터(1분에 67미터)
     estimated_time1 = (path_length1 / walking_speed) * 60 #분단위
     estimated_time1 = f'{estimated_time1:.0f}'
     estimated_time2 = (path_length2 / walking_speed) * 60 #분단위

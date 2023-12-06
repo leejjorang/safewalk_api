@@ -23,7 +23,7 @@ def calculate_route():
     
     def custom_weight2(u, v, data):
         length_weight = data.get('length')
-        final_weight = data.get('final') * 20
+        final_weight = data.get('final') * 15
         return length_weight + final_weight
     
     def include_linestring(G, route): #linestring에 있는 점들도 포함

@@ -1,0 +1,3 @@
+- app.py: flask로 작성한 파이썬 코드 파일
+- graph7.pkl: app.py에서 사용되는 부산 지도그래프. 엣지 데이터의 final 속성이 안전성 가중치(일부 지역만 범죄주의구간 음의 가중치 포함된 값)
+- requirements.txt: 라이브러리 목록
